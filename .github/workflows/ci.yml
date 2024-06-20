@@ -1,0 +1,27 @@
+name: ci
+on:
+  pull_request:
+    branches: [ main ]
+    types: [ synchronize, opened, reopened, ready_for_review ]
+
+jobs:
+  ci:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: oracle
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Check
+        run: ./gradlew check
+
+      - name: Assemble
+        run: ./gradlew assemble
