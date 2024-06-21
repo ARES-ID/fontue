@@ -1,21 +1,43 @@
 plugins {
-    kotlin("jvm") version "2.0.0"
+    alias(libs.plugins.orgJetbrainsKotlinJvm)
+    alias(libs.plugins.comGradlePluginPublish)
 }
 
-group = "com.rjspies"
-version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
+group = libs.versions.projectGroup.get()
+version = libs.versions.projectVersion.get()
 
 dependencies {
-    testImplementation(kotlin("test"))
+    implementation(libs.comSquareupOkio.okio)
+    implementation(libs.ioKtor.ktorClientCore)
+    implementation(libs.ioKtor.ktorClientCio)
+    implementation(libs.ioKtor.ktorClientLogging)
 }
 
 tasks.test {
     useJUnitPlatform()
 }
+
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+        vendor.set(JvmVendorSpec.SAP)
+    }
+}
+
+gradlePlugin {
+    plugins {
+        create("fontue") {
+            id = "com.rjspies.fontue"
+            implementationClass = "FontuePlugin"
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "fontue"
+            url = uri("../local-plugin-repository")
+        }
+    }
 }
