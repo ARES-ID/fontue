@@ -9,6 +9,8 @@ projectVersion = "1.0.0"
 [plugins]
 orgJetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 comGradlePluginPublish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
+orgJmailenKotlinter = { id = "org.jmailen.kotlinter", version = "4.3.0" }
+ioGitlabArturboshDetekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.6" }
 
 [libraries]
 comSquareupOkio-okio = { group = "com.squareup.okio", name = "okio", version = "3.9.0" }

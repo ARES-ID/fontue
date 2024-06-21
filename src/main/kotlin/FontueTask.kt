@@ -1,8 +1,10 @@
-import io.ktor.client.*
-import io.ktor.client.engine.cio.*
-import io.ktor.client.plugins.logging.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.request.get
+import io.ktor.client.statement.readBytes
 import org.gradle.api.DefaultTask
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
@@ -13,6 +15,8 @@ import java.io.FileOutputStream
 import java.net.URI
 import java.util.zip.ZipInputStream
 import kotlinx.coroutines.runBlocking
+
+private const val INITIAL_SIZE = 1024
 
 abstract class FontueTask : DefaultTask() {
     @get:Input
@@ -45,7 +49,7 @@ abstract class FontueTask : DefaultTask() {
                             }
                         }
                         FileOutputStream(path).use { fileOutputStream ->
-                            val buffer = ByteArray(1024)
+                            val buffer = ByteArray(INITIAL_SIZE)
                             var length: Int
                             while (zipInputStream.read(buffer).also { length = it } > 0) {
                                 fileOutputStream.write(buffer, 0, length)

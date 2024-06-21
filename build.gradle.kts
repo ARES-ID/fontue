@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.orgJetbrainsKotlinJvm)
     alias(libs.plugins.comGradlePluginPublish)
+    alias(libs.plugins.orgJmailenKotlinter)
+    alias(libs.plugins.ioGitlabArturboshDetekt)
 }
 
 group = libs.versions.projectGroup.get()
