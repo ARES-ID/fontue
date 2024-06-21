@@ -1,0 +1,17 @@
+[versions]
+kotlin = "1.9.23"
+ktor = "2.3.11"
+
+# Configuration
+projectGroup = "com.rjspies"
+projectVersion = "1.0.0"
+
+[plugins]
+orgJetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+comGradlePluginPublish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
+
+[libraries]
+comSquareupOkio-okio = { group = "com.squareup.okio", name = "okio", version = "3.9.0" }
+ioKtor-ktorClientCore = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ioKtor-ktorClientCio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
+ioKtor-ktorClientLogging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
