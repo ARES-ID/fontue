@@ -20,6 +20,11 @@ tasks.test {
 }
 
 kotlin {
+    compilerOptions {
+        explicitApi()
+        allWarningsAsErrors.set(true)
+    }
+
     jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of(21))
         vendor.set(JvmVendorSpec.SAP)
