@@ -20,6 +20,11 @@ tasks.test {
 }
 
 kotlin {
+    compilerOptions {
+        explicitApi()
+        allWarningsAsErrors.set(true)
+    }
+
     jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of(21))
         vendor.set(JvmVendorSpec.SAP)
@@ -30,7 +35,7 @@ gradlePlugin {
     plugins {
         create("fontue") {
             id = "com.rjspies.fontue"
-            implementationClass = "FontuePlugin"
+            implementationClass = "com.rjspies.fontue.FontuePlugin"
         }
     }
 }
