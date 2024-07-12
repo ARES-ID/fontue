@@ -35,7 +35,7 @@ gradlePlugin {
     plugins {
         create("fontue") {
             id = "com.rjspies.fontue"
-            implementationClass = "FontuePlugin"
+            implementationClass = "com.rjspies.fontue.FontuePlugin"
         }
     }
 }
