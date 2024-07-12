@@ -36,6 +36,7 @@ public abstract class FontueDownloadingTask : DefaultTask() {
             val byteArrayInputStream = ByteArrayInputStream(responseBytes)
             val zipInputStream = ZipInputStream(byteArrayInputStream)
             val files = unzipFontFiles(zipInputStream)
+            byteArrayInputStream.close()
             zipInputStream.close()
             writeFontFiles(files)
             client.close()
